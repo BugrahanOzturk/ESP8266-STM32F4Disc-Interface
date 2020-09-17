@@ -1,17 +1,9 @@
-TARGET = main
-SRCS = main.c
+# Build all the projects in the directory
 
-LINKER_SCRIPT = ../flash/stm32.ld
+subdirs=$(shell find . -mindepth 1 -maxdepth 1 -type d)
+all:
+	@echo "Building all the projects in the directory"
+	@for d in $(subdirs); do make -C $$d || exit 1; done
 
-# Generate debug info
-DEBUG = 1
-
-# Choose processor
-CDEFS  = -DSTM32F407xx
-# Enable FPU
-#CDEFS += -D__VFP_FP__
-
-# link math library
-#LIBS = -lm
-
-include ../armf4.mk
+clean:
+	@for d in $(subdirs); do make -C $$d $@; done

@@ -1,6 +1,6 @@
-SRCS += ../include/system_stm32f4xx.c
-SRCS += ../include/project1.c
-SRCS += ../include/startup_stm32f4disc.c
+SRCS += ../../include/project1.c
+SRCS += ../../include/startup_stm32f407vgtx.s
+SRCS += ../../include/system_stm32f4xx.c
 
 OBJDIR = Debug
 
@@ -10,8 +10,7 @@ vpath %.c $(sort $(dir $(SRCS)))
 vpath %.s $(sort $(dir $(SRCS)))
 
 INCLUDES += -I.
-INCLUDES += -I../include
-
+INCLUDES += -I../../include
 
 CFLAGS += $(CDEFS)
 
